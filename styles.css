@@ -1,115 +1,169 @@
- * { margin: 0; padding: 0; box-sizing: border-box; }
-        .index-inmobiliaria { font-family: 'Georgia', serif; } /* Una fuente con serifa da más elegancia */
+/* ================================
+   RESET
+================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            /* IMAGEN DE FONDO RESPONSIVE */
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('fondo_inmobiliaria.png') no-repeat center center fixed;
-            background-size: cover;
-            background-position: center;
-            background-attachment: scroll; /* Cambiar a fixed para efecto parallax en PC */
-            position: relative;
-        }
+/* ================================
+   BASE — BODY
+================================ */
+body {
+    font-family: 'Georgia', serif;
+    background:
+        linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)),
+        url('preview.webp') no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll; /* fixed rompe en iOS Safari */
+    /* Empuja el footer abajo si hay poco contenido */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* ================================
+   HERO
+   Mobile-first: columna centrada,
+   sin margin negativos
+================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px 120px;   /* bottom generoso: deja aire sobre el WSP */
+    
+}
 
-        .container {
-            max-width: 800px;
-            margin-top: -150px;
-            width: 100%;
-            text-align: center;
-            color: white;
-            z-index: 10;
-        }
+/* ================================
+   CONTENEDOR DE TEXTO
+================================ */
+.container {
+    width: 100%;
+    max-width: 760px;
+    text-align: center;
+    color: #fff;
+}
 
-        .container h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            line-height: 1.1;
-            margin-bottom: 20px;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-        }
+.container h1 {
+    font-size: clamp(1.8rem, 6vw, 3.8rem);
+    line-height: 1.2;
+    margin-bottom: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.6);
+}
 
-        .container p {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            letter-spacing: 1px;
-            opacity: 0.9;
-        }
+.container p {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+    line-height: 1.65;
+    margin-bottom: 32px;
+    opacity: 0.92;
+}
 
-        /* BOTÓN RESPONSIVE */
-        .btn-inmo {
-            background-color: #c0a060; /* Color dorado/elegante */
-            color: white;
-            padding: 18px 40px;
-            text-decoration: none;
-            font-family: 'Segoe UI', sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 4px;
-            display: inline-block;
-            transition: 0.3s;
-            border: 2px solid  rgba(255, 181, 34, 0.943);
-            box-shadow: 0 4px 15px rgb(240, 195, 107);
-        }
+/* ================================
+   BOTÓN PRINCIPAL
+================================ */
+.btn-inmo {
+    display: inline-block;
+    background-color: #c0a060;
+    color: #fff;
+    padding: 15px 36px;
+    text-decoration: none;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border-radius: 4px;
+    border: 2px solid rgba(255,181,34,0.9);
+    box-shadow: 0 4px 18px rgba(192,160,96,0.45);
+    transition: background-color 0.3s, transform 0.2s;
+    /* Evita que sea demasiado angosto en móvil */
+    min-width: 220px;
+}
 
-        .btn-inmo:hover {
-            background-color:  #9b8b6c;
-            border-color: #c0a060;
-        }
+.btn-inmo:hover {
+    background-color: #9b8b6c;
+    transform: translateY(-2px);
+}
 
-        .logo-wsp {
-            position: fixed;
-            width: 150px;
-            height: auto;
-            bottom: 40px;
-            right: 150px;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
+/* ================================
+   WHATSAPP — fixed, siempre visible
+================================ */
+.logo-wsp {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 58px;
+    height: 58px;
+    z-index: 9999;
+    display: block;
+    transition: transform 0.3s ease;
+}
 
-        /* MEDIA QUERIES PARA CELULAR */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 40px 15px;
-                /* En celular a veces es mejor que la imagen no esté fija */
-                background-attachment: scroll; 
-                align-items: center;
-            }
+.logo-wsp img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 7px rgba(0,0,0,0.40));
+}
 
-            .container {
-                margin-top: -200px;
-                align-items: center;
-            }
+.logo-wsp:hover {
+    transform: scale(1.12);
+}
 
-            .container h1 {
-                font-size: 2.2rem;
-                margin-bottom: 15px;
-            }
+/* ================================
+   RESPONSIVE — pantallas medianas
+================================ */
+@media (max-width: 600px) {
+    .hero {
+        padding: 50px 20px 110px;
+        justify-content: center;
+    }
 
-            .container p {
-                font-size: 1rem;
-                margin-bottom: 25px;
-            }
+    .container h1 {
+        font-size: clamp(1.6rem, 8vw, 2.4rem);
+        margin-bottom: 14px;
+    }
 
-            .btn-inmo {
-                width: 100%; /* Botón ocupa todo el ancho en móvil */
-                max-width: 320px;
-            }
+    .container p {
+        font-size: 0.97rem;
+        margin-bottom: 26px;
+    }
 
-            .logo-wsp {
-                width: 100px;
-                height: auto;
-                margin-bottom: 100px;
-                margin-right: 30px;
-                margin-top: 2px;
-            }
+    .btn-inmo {
+        display: block;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+        padding: 15px 16px;
+        font-size: 0.85rem;
+    }
 
+    .logo-wsp {
+        margin-top: 5px;
+        width: 52px;
+        height: 52px;
+        bottom: 16px;
+        right: 16px;
+    }
+}
 
+@media (max-width: 380px) {
+    .container h1 {
+        font-size: 1.55rem;
+    }
 
-
-        }
+    .container p {
+        font-size: 0.9rem;
+    }
+      .logo-wsp {
+        width: 52px;
+        height: 52px;
+        right: 26px;
+        bottom: 16px;
+    }
+}
