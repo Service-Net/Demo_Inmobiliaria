@@ -1,0 +1,115 @@
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+        .index-inmobiliaria { font-family: 'Georgia', serif; } /* Una fuente con serifa da más elegancia */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            /* IMAGEN DE FONDO RESPONSIVE */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('fondo_inmobiliaria.png') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll; /* Cambiar a fixed para efecto parallax en PC */
+            position: relative;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: -150px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+
+        .container h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .container p {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* BOTÓN RESPONSIVE */
+        .btn-inmo {
+            background-color: #c0a060; /* Color dorado/elegante */
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            display: inline-block;
+            transition: 0.3s;
+            border: 2px solid  rgba(255, 181, 34, 0.943);
+            box-shadow: 0 4px 15px rgb(240, 195, 107);
+        }
+
+        .btn-inmo:hover {
+            background-color:  #9b8b6c;
+            border-color: #c0a060;
+        }
+
+        .logo-wsp {
+            position: fixed;
+            width: 150px;
+            height: auto;
+            bottom: 40px;
+            right: 150px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        /* MEDIA QUERIES PARA CELULAR */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 15px;
+                /* En celular a veces es mejor que la imagen no esté fija */
+                background-attachment: scroll; 
+                align-items: center;
+            }
+
+            .container {
+                margin-top: -200px;
+                align-items: center;
+            }
+
+            .container h1 {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+
+            .container p {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+
+            .btn-inmo {
+                width: 100%; /* Botón ocupa todo el ancho en móvil */
+                max-width: 320px;
+            }
+
+            .logo-wsp {
+                width: 100px;
+                height: auto;
+                margin-bottom: 100px;
+                margin-right: 30px;
+                margin-top: 2px;
+            }
+
+
+
+
+        }
